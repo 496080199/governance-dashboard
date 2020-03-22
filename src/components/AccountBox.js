@@ -15,6 +15,7 @@ import { modalOpen } from '../reducers/modal';
 import AddressSelection from './modals/AddressSelection';
 import PathSelection from './modals/PathSelection';
 import { AccountTypes } from '../utils/constants';
+import intl from 'react-intl-universal';
 
 const StyledArrow = styled.img`
   margin-left: 0.7em;
@@ -185,7 +186,7 @@ class AccountBox extends Component {
                 address={activeAccount.address}
               />
             ) : (
-              <Account noAccounts>No Accounts</Account>
+              <Account noAccounts>{intl.get('No Accounts')}</Account>
             )}
             <StyledArrow />
           </SelectedItem>
@@ -208,12 +209,12 @@ class AccountBox extends Component {
                   });
                 }}
               >
-                Connect to Trezor
+                {intl.get('Connect to Trezor')}
               </ConnectLink>
             </DropdownRowForLink>
             <DropdownRowForLink>
               <ConnectLink onClick={() => modalOpen(PathSelection)}>
-                Connect to Ledger
+                {intl.get('Connect to Ledger')}
               </ConnectLink>
             </DropdownRowForLink>
           </DropdownList>
@@ -243,7 +244,6 @@ const mapStateToProps = ({ accounts }, props) => ({
   fetching: props.fetching ? true : accounts.fetching
 });
 
-export default connect(
-  mapStateToProps,
-  { setActiveAccount, modalOpen }
-)(AccountBox);
+export default connect(mapStateToProps, { setActiveAccount, modalOpen })(
+  AccountBox
+);

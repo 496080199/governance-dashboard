@@ -16,6 +16,7 @@ import AccountBox from '../components/AccountBox';
 import Toasts from '../components/Toasts';
 import NetworkIndicator from '../components/NetworkIndicator';
 import SecureVoting from '../components/modals/SecureVoting';
+import intl from 'react-intl-universal';
 
 const StyledLayout = styled.div`
   position: relative;
@@ -154,7 +155,7 @@ const BaseLayout = ({
                 style={{ color: 'white' }}
                 to={{ pathname: '/', search: location.search }}
               >
-                Governance
+                {intl.get('Governance')}
               </NavLink>
               <NetworkNotification style={{ marginLeft: '16px' }}>
                 {childrenShouldMount && <NetworkIndicator network={network} />}
@@ -166,19 +167,19 @@ const BaseLayout = ({
                   to={{ pathname: '/', search: location.search }}
                   r={207}
                 >
-                  Executive
+                  {intl.get('Executive')}
                 </StyledLink>
                 <StyledLink
                   to={{ pathname: '/polling', search: location.search }}
                   r={106}
                 >
-                  Polling
+                  {intl.get('Polling')}
                 </StyledLink>
                 <StyledLink
                   to={{ pathname: '/modules', search: location.search }}
                   r={6}
                 >
-                  Modules
+                  {intl.get('Modules')}
                 </StyledLink>
               </StyledLinkWrapper>
               <DimHeaderElement
@@ -203,7 +204,7 @@ const BaseLayout = ({
                 mr={50}
                 ml={50}
               >
-                Voting Contract
+                {intl.get('Voting Contract')}
               </DimHeaderElement>
               <AccountBox fetching={!wrongNetwork && metamaskFetching} />
             </Flex>

@@ -17,6 +17,20 @@ import theme from './theme';
 import { themeDark, themeLight } from '@makerdao/ui-components-core';
 import '@makerdao/ui-components-core/dist/styles/global.css';
 
+import intl from 'react-intl-universal';
+import zh from './i18n/zh.json';
+import en from './i18n/en.json';
+
+let lang =
+  (navigator.languages && navigator.languages[0]) || navigator.language;
+intl.init({
+  currentLocale: lang.split('-')[0],
+  locales: {
+    zh,
+    en
+  }
+});
+
 const currTheme = {
   ...theme,
   ...themeDark,
